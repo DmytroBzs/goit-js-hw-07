@@ -26,14 +26,25 @@ const images = [
 ];
 
 const galleryList = document.querySelector(".gallery");
-images.forEach((image) => {
-  const listItem = document.createElement("li");
-  listItem.classList.add("gallery-item");
-  const imageElement = document.createElement("img");
-  imageElement.src = image.url;
-  imageElement.alt = image.alt;
-  imageElement.width = 360;
-  imageElement.height = 300;
-  listItem.appendChild(imageElement);
-  galleryList.appendChild(listItem);
-});
+
+const listItemString = images
+  .map(
+    (image) => `<li class="gallery-item">
+    <img src="${image.url}" alt="${image.alt}" width="360" height="300">
+  </li>`
+  )
+  .join("");
+
+galleryList.insertAdjacentHTML("beforeend", listItemString);
+
+// images.forEach((image) => {
+//   const listItem = document.createElement("li");
+//   listItem.classList.add("gallery-item");
+//   const imageElement = document.createElement("img");
+//   imageElement.src = image.url;
+//   imageElement.alt = image.alt;
+//   imageElement.width = 360;
+//   imageElement.height = 300;
+//   listItem.appendChild(imageElement);
+//   galleryList.appendChild(listItem);
+// });
